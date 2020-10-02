@@ -5,38 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
       integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/style.css" />
-    <title>ChatCord App</title>
+    <title>ChatWithMe App</title>
   </head>
   <body>
-    <div class="chat-container">
-      <header class="chat-header">
-        <h1><i class="fas fa-smile"></i> ChatCord</h1>
-        <a href="index.html" class="btn">Leave Room</a>
-      </header>
-      <main class="chat-main">
-        <div class="chat-sidebar">
-          <h3><i class="fas fa-comments"></i> Room Name:</h3>
-          <h2 id="room-name"></h2>
-          <h3><i class="fas fa-users"></i> Users</h3>
-          <ul id="users"></ul>
+    <nav class="navbar navbar-dark bg-dark">
+      <h1 class="navbar-brand">
+        <i class="fas fa-smile text-warning"></i> ChatWithMe
+      </h1>
+    </nav>
+    <div class="container pt-3">
+      <main class="chat-main row">
+        <div class="col-3 p-2 bg-dark">
+          <div class="chat-sidebar overflow-auto text-light">
+            <h6><i class="fas fa-comments"></i> Room:</h5>
+            <h6 id="room-name" class="bg-success p-2"></h4>
+            <h6><i class="fas fa-users"></i> Users</h5>
+            <ul id="users" className="list-group"></ul>
+          </div>
         </div>
-        <div class="chat-messages"></div>
+        <div class="col-8 bg-light border p-3">
+          <div
+            class="chat-messages"
+            style="overflow-y: scroll; max-height: 400px; min-height: 400px"
+          ></div>
+        </div>
       </main>
+
       <div class="chat-form-container">
-        <form id="chat-form">
+        <form id="chat-form" class="form-group d-flex">
           <input
             id="msg"
             type="text"
             placeholder="Enter Message"
             required
+            class="form-control w-75"
             autocomplete="off"
           />
-          <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
+          <button class="btn btn-info mx-2">
+            <i class="fas fa-paper-plane"></i> Send
+          </button>
         </form>
       </div>
     </div>
@@ -46,7 +64,27 @@
       integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4="
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/main.js"></script>
+    <script>
+      $(document).ready(() => {
+        $(".toast").toast("show");
+      });
+    </script>
   </body>
 </html>
